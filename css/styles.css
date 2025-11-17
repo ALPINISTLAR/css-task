@@ -1,3 +1,7 @@
+:root{
+  --gradient: linear-gradient(120deg, #3a7bd5, #3a6073);
+  --strong-gradient: linear-gradient(90deg,#1a4dff,#2ce6ff,#1a4dff,#2ce6ff);
+}
 /* ** GLOBAL STYLES ** */
 html
 {
@@ -10,10 +14,10 @@ html
 *::after
 {
   box-sizing: inherit;
+  margin: 0;
+  padding: 0;
 }
-/* ----------------- */
-/* ===== body ====== */
-/* ----------------- */
+/* ===== BODY ====== */
 body
 {
   display: flex;
@@ -62,13 +66,200 @@ select:-webkit-autofill:focus {
 /* *** CONTAINER *** */
 .container
 {
+  max-width: 1340px;
   width: 100%;
-  margin-right: auto;
-  margin-left: auto;
+  margin: 0 auto;
+  padding: 0 20px;
 }
-
 /* ** MAIN CONTENT ** */
 .main-content
 {
   flex-grow: 1;
+}
+/* HEADER */
+header {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: transform 0.4s ease;
+}
+.logo span{
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+.logo:hover span {
+  background: var(--strong-gradient);
+  background-size: 400% 400%;
+  animation: strongGradient 2.5s linear infinite;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+.logo:active{
+  opacity: 0.6;
+}
+.logo-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--gradient);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 20px;
+}
+.logo:hover .logo-icon{
+  background: var(--strong-gradient);
+  background-size: 400% 400%;
+  animation: strongGradient 2.5s linear infinite;
+}
+nav {
+  max-width: 800px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 50px;
+  margin-left: 24px;
+}
+nav div{
+  display: flex;
+  gap: 16px;
+}
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+}
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  position: relative;
+}
+nav ul li a::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 0;
+  height: 2.5px;
+  background: var(--gradient);
+  transition: width 0.3s ease;
+}
+nav ul li a:hover {
+  color: #3a7bd5;
+}
+nav ul li a:active {
+  opacity: 0.6;
+}
+nav ul li a:hover::after {
+  width: 100%;
+}
+.cta-button {
+  display: flex;
+  background: var(--gradient);
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border: 0;
+  border-radius: 8px;
+  border: 0;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  white-space: nowrap;
+}
+.cta-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.7);
+}
+.cta-button:nth-child(2n):hover {
+  transform: none;
+  background: var(--strong-gradient);
+  background-size: 400% 400%;
+  animation: strongGradient 2.5s linear infinite;
+  box-shadow: none;
+  color: white;
+}
+.cta-button:active {
+  opacity: 0.6;
+}
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+.menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background: #667eea;
+  border-radius: 3px;
+  transition: 0.3s;
+}
+/* KEYFRAMES */
+@keyframes strongGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+/* MEDIA */
+@media (max-width: 800px) {
+  nav {
+    gap: 20px;
+  }
+}
+@media (max-width: 768px) {
+  nav {
+    position: absolute;
+    top: 90px;
+    left: 0;
+    right: 0;
+    margin-left: 0;
+    background: white;
+    flex-direction: column;
+    padding: 20px;
+    gap: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: transform 0.4s ease, opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  nav.active {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .menu-toggle {
+    display: flex;
+    cursor: pointer;
+    transition: transform 0.5s ease;
+  }
+  .menu-rotate {
+    transform: rotate(-90deg);
+  }
 }
