@@ -10,7 +10,6 @@
   <!-- ======================================= -->
 
 
-
   <!-- =============================== -->
   <!-- =====       STYLES        ===== -->
   <!-- =============================== -->
@@ -18,13 +17,42 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <a href="index.html" class="logo">
+          <div class="logo-icon">S</div>
+          <span>Samsung</span>
+        </a>
+
+        <nav id="navMenu">
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+
+          <div class="btn-wrapper">
+            <button class="cta-button" >Sign in</button>
+            <button class="cta-button" >Sign up</button>
+          </div>
+        </nav>
+
+        <div class="menu-toggle" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </header>
 
 
-
-<!-- ************************ -->
-<!-- ***   MAIN SECTION   *** -->
-<!-- ************************ -->
-<main class="main-content"></main>
+  <!-- ************************ -->
+  <!-- ***   MAIN SECTION   *** -->
+  <!-- ************************ -->
+  <main class="main-content"></main>
 
   <script src="js/main.js"></script>
 </body>
